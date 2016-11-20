@@ -1,13 +1,21 @@
-<a href="/goods/add">增加</a>
-<a href="/goods/del">删除</a>
-<a href="/goods/update">改动</a>
+<form method="POST" action="/goods/add">
+    <input type="radio" name="category" value="{{goodslist.category}}">{{goodslist.category}}<br>
+    <input  name="price" placeholder=" 价格"><br>
+    <input  name="title" placeholder=" 品名"><br>
+    <input  name="link" placeholder=" 链接"><br>
+
+
+
+    <input type="submit" value="提交">
+</form>
+
 <br>
 
-{%for each in goodslist%}
+{%for each in goodslist.goods%}
 {{each.price}}<br>
 {{each.title}}<br>
 {{each.link}}<br>
-{{each.image}}<br>
+{{each.goods.image}}<br>
 
 
 

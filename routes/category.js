@@ -12,18 +12,11 @@ router.get('/', function(req, res, next) {
       for (var i = 0; i < docs.length; i++) {
         arr.push(docs[i].category)
       }
-    console.log(arr)
     res.render('category.html',{datalist:arr})
     })
     })
 
-router.post('/',function (req,res,next) {
-  db.presents.findOne({category:req.body.catesel},function (err,docs) {
-    res.render('goods.html',{goodslist:docs.goods})
-    console.log(docs.goods)
-  })
 
-})
 
 
 
