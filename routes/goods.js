@@ -1,5 +1,5 @@
 /**
- * Created by renxi on 2016/11/20.
+ * Created by renxi on 2016/11/21.
  */
 var express = require('express');
 var router = express.Router();
@@ -22,7 +22,7 @@ router.post('/add',function (req,res) {
             price:req.body.price,
             title:req.body.title,
             link:req.body.link,
-            image:''
+            image:req.body.image
         }
         docs.goods.push(newgood)
 
@@ -44,8 +44,29 @@ router.get('/del',function (req,res) {
 })
 
 router.post('/update',function (req,res) {
+    db.presents.findAndModify({
+        query: {category: req.query.category},
+        update: {$pull:{goods:{gid:req.query.gid}}}
+    },function (err,doc1) {
+        db.presents.findAndModify({
+            query:{category:req.query.category},
+            update:{$push:
+            {goods:{
+                title:req.body.title,
+                link:req.body.link,
+                price:req.body.price,
+                image:req.body.image,
+                gid:req.query.gid
+            }
+            }
+            }
+        },function (err,doc2) {
+        })
+
+    })
     res.render('success.html')
 })
+
 
 router.get('/update',function (req,res) {
     res.render('update.html')
