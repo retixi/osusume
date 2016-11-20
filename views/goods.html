@@ -1,0 +1,15 @@
+<a href="/goods/add">增加</a>
+<a href="/goods/del">删除</a>
+<a href="/goods/update">改动</a>
+<br>
+
+{%for each in goodslist%}
+{{each.price}}<br>
+{{each.title}}<br>
+{{each.link}}<br>
+{{each.image}}<br>
+
+
+
+
+{%endfor%}

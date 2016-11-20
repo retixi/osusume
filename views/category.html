@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>请选择项目</h3>
+
+<form method="POST">
+
+    <input list="browsers" name="catesel">
+    <datalist id="browsers">
+        {%for each in datalist%}
+        <option value="{{each}}">
+        {%endfor%}
+    </datalist>
+    <input type="submit" value="提交">
+</form>
+
+
+</body>
+</html>
