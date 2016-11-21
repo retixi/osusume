@@ -1,7 +1,7 @@
 <form method="POST" action="/goods/add">
-    <input type="radio" name="category" value="{{goodslist.category}}">{{goodslist.category}}<br>
-    <input  name="price" placeholder=" 价格"><br>
+    <input type="radio" name="category" readonly="readonly" value="{{goodslist.category}}" checked>{{goodslist.category}}<br>
     <input  name="title" placeholder=" 品名"><br>
+    <input  name="price" placeholder=" 价格"><br>
     <input  name="link" placeholder=" 链接"><br>
     <input  name="image" placeholder=" 图片"><br>
 
@@ -14,12 +14,12 @@
 <br>
 
 {%for each in goodslist.goods%}
-{{each.price}}<br>
 {{each.title}}<br>
+{{each.price}}<br>
 {{each.link}}<br>
-{{each.goods.image}}<br>
-<a href="/goods/del?category={{goodslist.category}}&gid={{each.gid}}">删除</a><br>
-<a href="/goods/update?category={{goodslist.category}}&gid={{each.gid}}">更改</a><br>
+{{each.image}}<br>
+<a href="/goods/del?category={{goodslist.category}}&gid={{each.gid}}">删除</a>
+<a href="/goods/update?category={{goodslist.category}}&gid={{each.gid}}&title={{each.title}}">更改</a><br><br>
 
 
 

@@ -1,5 +1,8 @@
 /**
- * Created by renxi on 2016/11/21.
+ * Created by retixi on 2016/11/21.
+ */
+/**
+ * Created by retixi on 2016/11/21.
  */
 var express = require('express');
 var router = express.Router();
@@ -69,12 +72,13 @@ router.post('/update',function (req,res) {
 
 
 router.get('/update',function (req,res) {
-    res.render('update.html')
-})
+    res.render('update.html',{title:req.query.title})
+        })
 
 
 
 
 
 
-module.exports = router;
+
+    module.exports = router;
