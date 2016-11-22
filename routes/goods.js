@@ -12,6 +12,30 @@ router.post('/',function (req,res,next) {
 })
 
 router.post('/add',function (req,res) {
+    require('crypto').randomBytes(16, function(ex, buf) {
+        var token = buf.toString('hex');
+        db.presents.findAndModify({
+            query:{category:req.body.category},
+            update:{$push:
+            {goods:{
+                title:req.body.title,
+                link:req.body.link,
+                price:req.body.price,
+                image:req.body.image,
+                gid:req.body.category+"-"+token
+            }
+            }
+            }
+        },function (err,doc2) {
+        res.render('success.html')
+
+    })
+
+
+
+    })
+
+   /*
     db.presents.findOne({category:req.body.category},function (err,docs) {
         require('crypto').randomBytes(16, function(ex, buf) {
             global.token = buf.toString('hex');
@@ -24,14 +48,13 @@ router.post('/add',function (req,res) {
                 image:req.body.image
             }
             docs.goods.push(newgood)
-
             db.presents.update({category:req.body.category},{$set:{goods:docs.goods}
             })
         })
         });
-
     res.render('success.html')
 
+    */
 })
 
 router.get('/del',function (req,res) {
