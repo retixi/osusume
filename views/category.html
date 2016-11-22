@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<h3>请选择项目</h3>
+<h3>按照类别查找商品</h3>
 
 <form method="POST" action="/goods">
 
@@ -12,6 +12,14 @@
         <option value="{{each}}">
         {%endfor%}
     </datalist>
+    <input type="submit" value="提交">
+</form>
+<br><br>
+<h3>按照gid查找物品</h3>
+
+<form method="POST" action="/category/singlegood">
+
+    <input type="text" name="gid">
     <input type="submit" value="提交">
 </form>
 

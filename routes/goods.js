@@ -1,9 +1,3 @@
-/**
- * Created by retixi on 2016/11/21.
- */
-/**
- * Created by retixi on 2016/11/21.
- */
 var express = require('express');
 var router = express.Router();
 var db=require('../db').db
@@ -19,19 +13,23 @@ router.post('/',function (req,res,next) {
 
 router.post('/add',function (req,res) {
     db.presents.findOne({category:req.body.category},function (err,docs) {
-        var number=docs.goods.length+1
-        var newgood={
-            gid:docs.category+number,
-            price:req.body.price,
-            title:req.body.title,
-            link:req.body.link,
-            image:req.body.image
-        }
-        docs.goods.push(newgood)
+        require('crypto').randomBytes(16, function(ex, buf) {
+            global.token = buf.toString('hex');
+            console.log(token);
+            var newgood={
+                gid:docs.category+"-"+token,
+                price:req.body.price,
+                title:req.body.title,
+                link:req.body.link,
+                image:req.body.image
+            }
+            docs.goods.push(newgood)
 
-        db.presents.update({category:req.body.category},{$set:{goods:docs.goods}
+            db.presents.update({category:req.body.category},{$set:{goods:docs.goods}
+            })
         })
-    })
+        });
+
     res.render('success.html')
 
 })
@@ -74,6 +72,8 @@ router.post('/update',function (req,res) {
 router.get('/update',function (req,res) {
     res.render('update.html',{title:req.query.title})
         })
+
+
 
 
 
