@@ -1,29 +1,54 @@
+{%extends 'base.html'%}
+{%block inner%}
+
 <form method="POST" action="/goods/add">
-    <input type="radio" name="category" readonly="readonly" value="{{goodslist.category}}" checked>{{goodslist.category}}<br>
+    类型：<input type="radio" name="category"
+           readonly="readonly"
+           value="{{goodslist.category}}" checked>
+    {{goodslist.category}}<br><br>
 
-    <input  name="title" placeholder=" 品名"><br>
-    <input  name="price" placeholder=" 价格"><br>
-    <input  name="link" placeholder=" 链接"><br>
-    <input  name="image" placeholder=" 图片"><br>
-
-
-
-
-    <input type="submit" value="提交">
+    <input  name="title" placeholder=" 品名"><br><br>
+    <input  name="price" placeholder=" 价格"><br><br>
+    <input  name="link" placeholder=" 链接"><br><br>
+    <input  name="image" placeholder=" 图片"><br><br>
+    <input type="submit" value="增加" class="btn btn-success">
 </form>
 
 <br>
-<h4>商品总数量:{{goodslist.goods.length}}<br><br></h4>>
+<h4>商品总数量:{{goodslist.goods.length}}<br><br></h4>
 {%for each in goodslist.goods%}
-商品id：{{each.gid}}<br>
-品名：{{each.title}}<br>
-价格：{{each.price}}<br>
-链接：{{each.link}}<br>
-图片：{{each.image}}<br>
-<a href="/goods/del?category={{goodslist.category}}&gid={{each.gid}}">删除</a>
-<a href="/goods/update?category={{goodslist.category}}&gid={{each.gid}}&title={{each.title}}">更改</a><br><br>
 
+<div class="row">
+<div class="col-md-12">
+<div class="panel panel-default">
+<div class="panel-heading">
+    商品id：{{each.gid}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="/goods/del?category={{goodslist.category}}&gid={{each.gid}}"
+       class="btn btn-danger"
+       role="button">
+        删除
+    </a>
+    <a href="/goods/update?category={{goodslist.category}}&gid={{each.gid}}&title={{each.title}}"
+       class="btn btn-primary"
+       role="button">
+        更改
+    </a>
+</div>
+<div class="panel panel-default">
 
+    <div class="panel-body">
 
+    品名：{{each.title}}<br>
+    价格：{{each.price}}<br>
+    链接：{{each.link}}<br>
+    图片：{{each.image}}<br>
 
+    </div>
+
+</div>
+</div>
+</div>
+</div>
 {%endfor%}
+
+{%endblock%}

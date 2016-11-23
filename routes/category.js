@@ -17,7 +17,6 @@ router.get('/', function(req, res, next) {
     })
 
 router.post('/singlegood',function (req,res) {
-  console.log(req.body.gid)
   db.presents.find({"goods.gid":req.body.gid},{'goods.$':1,_id:0},function (err,doc) {
     res.render('singlegood.html',{singlegood:doc[0].goods[0]})
   })

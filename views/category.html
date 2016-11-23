@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html>
-<body>
-
+{%extends 'base.html'%}
+{%block inner%}
 <h3>按照类别查找商品</h3>
 
 <form method="POST" action="/goods">
@@ -20,9 +18,9 @@
 <form method="POST" action="/category/singlegood">
 
     <input type="text" name="gid">
-    <input type="submit" value="提交">
+    <input type="suebmit" value="提交">
 </form>
 
+{%endblock%}
 
-</body>
-</html>
+
