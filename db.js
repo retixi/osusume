@@ -3,7 +3,7 @@
  */
 var mongojs = require('mongojs');
 var db = mongojs('zhihuazhang:p821161102@happyCoupon.zhihuazhang.net/presentchat',
-    ['users', 'events', 'messages', 'devices','presents']);
+    ['users', 'events', 'messages', 'devices','presents','transactions']);
 db.users.find(function (err,docs) {
 })
 

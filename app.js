@@ -7,7 +7,8 @@ var bodyParser = require('body-parser');
 
 var goods = require('./routes/goods');
 var category = require('./routes/category');
-var useSwig=require('./routes/useSwig')
+var useSwig=require('./routes/useSwig');
+var transactions=require('./routes/transactions');
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/category', category);
 app.use('/goods', goods);
 app.use('/useSwig',useSwig);
+app.use('/transactions',transactions)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

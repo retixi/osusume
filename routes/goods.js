@@ -17,14 +17,14 @@ router.post('/add',function (req,res) {
         db.presents.findAndModify({
             query:{category:req.body.category},
             update:{$push:
-            {goods:{
-                title:req.body.title,
-                link:req.body.link,
-                price:req.body.price,
-                image:req.body.image,
-                gid:req.body.category+"-"+token
-            }
-            }
+                {goods:{
+                    title:req.body.title,
+                    link:req.body.link,
+                    price:req.body.price,
+                    image:req.body.image,
+                    gid:req.body.category+"-"+token
+                        }
+                }
             }
         },function (err,doc2) {
         res.render('success.html')
@@ -63,8 +63,9 @@ router.get('/del',function (req,res) {
         update:{$pull:{goods:{gid:req.query.gid}}}
     },function (err,doc1) {
         console.log(doc1)
+        res.render('success.html')
     })
-    res.render('success.html')
+
 })
 
 router.post('/update',function (req,res) {
@@ -85,23 +86,16 @@ router.post('/update',function (req,res) {
             }
             }
         },function (err,doc2) {
+            res.render('success.html')
         })
 
     })
-    res.render('success.html')
+
 })
 
 
 router.get('/update',function (req,res) {
     res.render('update.html',{title:req.query.title})
         })
-
-
-
-
-
-
-
-
 
     module.exports = router;
