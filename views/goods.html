@@ -1,18 +1,45 @@
 {%extends 'base.html'%}
 {%block inner%}
 
-<form method="POST" action="/goods/add">
-    类型：<input type="radio" name="category"
-           readonly="readonly"
-           value="{{goodslist.category}}" checked>
-    {{goodslist.category}}<br><br>
+<!-- 按钮触发模态框 -->
+<button class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">
+    新增商品
+</button>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    新增商品
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="/goods/add">
+                    类型：<input type="radio" name="category"
+                              readonly="readonly"
+                              value="{{goodslist.category}}" checked>
+                    {{goodslist.category}}<br><br>
 
-    <input  name="title" placeholder=" 品名"><br><br>
-    <input  name="price" placeholder=" 价格"><br><br>
-    <input  name="link" placeholder=" 链接"><br><br>
-    <input  name="image" placeholder=" 图片"><br><br>
-    <input type="submit" value="增加" class="btn btn-success">
-</form>
+                    <input  name="title" placeholder=" 品名"><br><br>
+                    <input  name="price" placeholder=" 价格"><br><br>
+                    <input  name="link" placeholder=" 链接"><br><br>
+                    <input  name="image" placeholder=" 图片"><br><br>
+                    <input type="submit" value="增加" class="btn btn-success">
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
 
 <br>
 <h4>商品总数量:{{goodslist.goods.length}}<br><br></h4>
